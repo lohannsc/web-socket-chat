@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Senac Chat — WebSocket</title>
+  <link rel="stylesheet" href="/static/estilo.css">
+  <script src="/static/chat.js" defer></script>
+</head>
+<body>
+  <main class="aplicacao">
+    <header>
+      <p class="sobretitulo">Projeto WebSocket • Python + JavaScript</p>
+      <h1>Senac Chat</h1>
+      <p>Converse com colegas em tempo real.</p>
+    </header>
+
+    <section class="painel" aria-label="Sala de bate-papo">
+      <form id="form-entrada" class="linha">
+        <label for="nome">Seu apelido</label>
+        <input id="nome" name="nome" placeholder="Ex.: Ana" required minlength="2" maxlength="20">
+        <button type="submit" id="btn-conectar">Entrar</button>
+        <button type="button" id="btn-sair" disabled>Sair</button>
+      </form>
+
+      <p id="situacao" role="status">Desconectado</p>
+      <ul id="mensagens" aria-label="Mensagens da sala" aria-live="polite"></ul>
+
+      <form id="form-mensagem" class="linha">
+        <label for="mensagem">Sua mensagem</label>
+        <input id="mensagem" name="mensagem" placeholder="Digite uma mensagem" maxlength="300" disabled autocomplete="off">
+        <button id="btn-enviar" type="submit" disabled>Enviar</button>
+      </form>
+    </section>
+    <footer>Atividade prática • GitHub Desktop • FastAPI</footer>
+  </main>
+</body>
+</html>
