@@ -1,38 +1,99 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Senac Chat — WebSocket</title>
-  <link rel="stylesheet" href="/static/estilo.css">
-  <script src="/static/chat.js" defer></script>
-</head>
-<body>
-  <main class="aplicacao">
-    <header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Senac Chat — WebSocket</title>
+    <link rel="stylesheet" href="/static/estilo.css" />
+    <script src="/static/chat.js" defer></script>
+  </head>
+  <body>
+    <main class="aplicacao">
+      <!-- Identificação externa -->
       <p class="sobretitulo">Projeto WebSocket • Python + JavaScript</p>
-      <h1>Senac Chat</h1>
-      <p>Converse com colegas em tempo real.</p>
-    </header>
 
-    <section class="painel" aria-label="Sala de bate-papo">
-      <form id="form-entrada" class="linha">
-        <label for="nome">Seu apelido</label>
-        <input id="nome" name="nome" placeholder="Ex.: Ana" required minlength="2" maxlength="20">
-        <button type="submit" id="btn-conectar">Entrar</button>
-        <button type="button" id="btn-sair" disabled>Sair</button>
-      </form>
+      <!-- Janela do Messenger -->
+      <section class="janela">
+        <!-- Barra de título -->
+        <header class="barra-titulo">
+          <h1>Senac <strong>Chat</strong></h1>
+          <div class="aero-controls">
+            <button class="aero-btn min" title="Minimizar"></button>
+            <button class="aero-btn max" title="Maximizar"></button>
+            <button class="aero-btn close" title="Fechar"></button>
+          </div>
+        </header>
 
-      <p id="situacao" role="status">Desconectado</p>
-      <ul id="mensagens" aria-label="Mensagens da sala" aria-live="polite"></ul>
+        <!-- Barra de ferramentas -->
+        <nav class="barra-ferramentas">Converse com colegas em tempo real.</nav>
 
-      <form id="form-mensagem" class="linha">
-        <label for="mensagem">Sua mensagem</label>
-        <input id="mensagem" name="mensagem" placeholder="Digite uma mensagem" maxlength="300" disabled autocomplete="off">
-        <button id="btn-enviar" type="submit" disabled>Enviar</button>
-      </form>
-    </section>
-    <footer>Atividade prática • GitHub Desktop • FastAPI</footer>
-  </main>
-</body>
+        <!-- Conteúdo da janela -->
+        <div class="conteudo-janela">
+          <form id="form-entrada" class="linha">
+            <div class="identificacao">
+              <div class="icone-usuario">
+                <div class="avatar-cabeca"></div>
+                <div class="avatar-corpo"></div>
+              </div>
+            </div>
+
+            <div class="dados-usuario">
+              <label for="nome">Seu apelido</label>
+
+              <input
+                id="nome"
+                name="nome"
+                placeholder="Ex.: Ana"
+                required
+                minlength="2"
+                maxlength="20"
+              />
+
+              <div class="status-usuario">
+                <span class="status-indicador"></span>
+
+                <select id="status-presenca">
+                  <option value="disponivel">Disponível</option>
+                  <option value="ocupado">Ocupado</option>
+                  <option value="ausente">Ausente</option>
+                  <option value="desconectado">Desconectado</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="botoes-entrada">
+              <button type="submit" id="btn-conectar">Entrar</button>
+              <button type="button" id="btn-sair" disabled>Sair</button>
+            </div>
+          </form>
+          <p id="situacao" role="status">Desconectado</p>
+          <ul
+            id="mensagens"
+            aria-label="Mensagens da sala"
+            aria-live="polite"
+          ></ul>
+
+          <form id="form-mensagem" class="compositor">
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              placeholder="Digite uma mensagem"
+              maxlength="300"
+            ></textarea>
+
+            <div class="barra-inferior">
+              <label for="mensagem">Sua mensagem</label>
+
+              <div class="acoes-mensagem">
+                <button id="btn-enviar" type="submit" disabled>Enviar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Rodapé da janela -->
+        <footer>Atividade prática • GitHub Desktop • FastAPI</footer>
+      </section>
+    </main>
+  </body>
 </html>

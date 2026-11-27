@@ -3,76 +3,206 @@
   box-sizing: border-box;
 }
 body {
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  color: #1b2b3a;
-  background-color: #dce8f3;
-  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 12px;
+  color: #333333;
+  background: linear-gradient(
+    35deg,
+    #8be0ff 0%,
+    #3ab0f0 22%,
+    #167ac6 52%,
+    #0b5499 80%,
+    #06376b 100%
+  );
   min-height: 100vh;
 }
 main {
   margin: auto;
 }
+.janela {
+  position: relative;
+  width: 100%;
+  min-height: 580px;
+
+  display: flex;
+  flex-direction: column;
+  background: #edf7fb;
+  border: 1px solid #789bad;
+  border-radius: 8px;
+  overflow: hidden;
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.75),
+    0 0 8px rgba(0, 0, 0, 0.35),
+    0 2px 15px rgba(0, 0, 0, 0.2);
+}
+.janela::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  border-left: 3px solid rgba(255, 255, 255, 0.65);
+  border-right: 3px solid rgba(95, 145, 170, 0.45);
+
+  border-radius: 8px;
+  pointer-events: none;
+}
+.barra-titulo {
+  background: linear-gradient(to bottom, #ddf5fc, #a9dceb, #c8eaf4);
+  padding: 8px 12px;
+  border-bottom: 1px solid #91c1d2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.barra-titulo h1 {
+  font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+  font-size: 28px;
+  font-weight: 300;
+  margin: 0;
+  color: #333333;
+}
+.barra-titulo h1 strong {
+  font-weight: 600;
+}
+.barra-ferramentas {
+  background: linear-gradient(to bottom, #48b5e2, #168bcb);
+
+  color: #ffffff;
+  padding: 8px 14px;
+  border-bottom: 1px solid #1683b8;
+}
+#form-entrada label {
+  background: linear-gradient(to bottom, #f5fff0, #d5edc9, #b5dfa2);
+
+  border-radius: 5px;
+
+  padding: 7px 10px;
+}
+.conteudo-janela {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  gap: 10px;
+}
 .sobretitulo {
   font-size: 11px;
   color: #66839c;
 }
-label {
-  font-size: 13px;
-  font-weight: normal;
-}
+
 #situacao {
   font-size: 12px;
-  color: #476783;
-}
-.painel {
-  background: #f5f9fd;
-  border: 1px solid #8bafbd;
-  border-top: none;
-  padding: 15px;
-  border-radius: 0 0 9px 9px;
-  box-shadow:
-    0 2px 5px rgba(0, 0, 0, 0.15),
-    inset 0 1px 2px rgba(255, 255, 255, 0.8);
-}
-.aplicacao {
-  width: 100%;
-  max-width: 850px;
-  margin: 30px auto;
-  padding: 20px;
+  color: #648397;
+  margin: 0;
 }
 
-.aplicacao header {
-  color: #263d52;
-  text-align: center;
-  background: linear-gradient(to bottom, #d9f0f8, #a5d9e9, #d4ebf3);
-  border: 1px solid #8bafbd;
-  border-radius: 9px 9px 0 0;
-  box-shadow: inset 0 1px 2px #ffffff;
-  padding: 12px 18px;
+.aplicacao {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 20px auto;
+  padding: 10px;
 }
-.aplicacao header h1 {
-  font-family: tahoma, sans-serif;
-  font-size: 18px;
-  color: #263d52;
-  margin: 0 0 5px;
+
+.controles-janela {
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: transparent;
+  box-shadow: none;
+  font-size: 13px;
+  color: #32566a;
 }
-.aplicacao header p {
-  font-size: 11px;
+.identificacao {
+  grid-area: avatar;
+}
+.icone-usuario {
+  width: 88px;
+  height: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: -2px;
+  background: linear-gradient(135deg, #ffffff, #d5eaf2);
+  border: 3px solid #83bd68;
+  border-radius: 13px;
+  box-shadow:
+    inset 0 0 0 2px #ffffff,
+    0 2px 5px rgba(91, 157, 65, 0.35);
+}
+.avatar-cabeca {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #91a9b5;
+  border-radius: 50%;
+
+  background: radial-gradient(circle at 35% 25%, #ffffff, #c4d5dc 55%, #819aa6);
+  z-index: 1;
+}
+.avatar-corpo {
+  width: 38px;
+  height: 36px;
+  margin-top: -2px;
+
+  background: linear-gradient(to right, #819ba9, #ffffff 45%, #b6c8d0);
+  border: 1px solid #91a9b5;
+  border-radius: 45% 45% 35% 35%;
+}
+.dados-usuario {
+  flex: 1;
+  min-width: 0;
+  gap: 4px;
+  min-width: 0;
+}
+.dados-usuario label {
+  font-size: 12px;
   color: #526f82;
-  margin: 3px 0;
+}
+.dados-usuario input {
+  width: 100%;
+  min-width: 0;
+}
+#nome {
+  width: 100%;
+  height: 34px;
+}
+.status-usuario {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.status-indicador {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #65bd50;
+  border: 1px solid #479a38;
+}
+.status-usuario select {
+  border: none;
+  background: transparent;
+  color: #526f82;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
 }
 #mensagens {
-  font-family: tahoma, sans-serif;
-  font-size: 12px;
-  color: #333333;
-  line-height: 1.5;
+  flex: 1;
+  min-height: 220px;
+  margin-top: 0;
   height: 300px;
-  overflow-wrap: anywhere;
+  width: 100%;
+  overflow-y: auto;
+
   background: #ffffff;
-  border: none;
-  padding: 4px 6px;
+  border: 1px solid #c5dce6;
+  padding: 12px;
   list-style: none;
+
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 #mensagens li {
@@ -101,12 +231,14 @@ input {
   background: #ffffff;
   border: 1px solid #9aabb9;
   padding: 9px;
-  font-family: Tahoma, sans-serif;
+  font-family: "Segoe UI", sans-serif;
   font-size: 13px;
 }
 #form-entrada {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  grid-template-areas: "avatar dados" "avatar botoes";
+  gap: 8px 12px;
   align-items: center;
 }
 #form-entrada input {
@@ -116,44 +248,177 @@ input {
 #form-entrada button {
   flex-shrink: 0;
 }
-
-#form-mensagem {
+.compositor {
   display: flex;
-  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 8px;
   width: 100%;
 }
-#form-mensagem input {
-  flex: 1;
-  min-width: 0;
-}
-#form-mensagem button {
-  flex-shrink: 0;
-}
-button {
-  background: linear-gradient(to bottom, #ffffff, #e5edf5);
-  border: 1px solid #7f9fb9;
-  border-radius: 2px;
-  padding: 6px 12px;
-  font-family: Arial, sans-serif;
+.compositor textarea {
+  width: 100%;
+  min-height: 90px;
+  resize: vertical;
+  background: #ffffff;
+  border: 1px solid #a6bccb;
+  padding: 10px;
+  font-family: "Segoe UI", sans-serif;
   font-size: 12px;
-  cursor: pointer;
   color: #333333;
 }
+.barra-inferior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.barra-inferior label {
+  font-size: 11px;
+  color: #647d8b;
+}
+.acoes-mensagem {
+  display: flex;
+  gap: 8px;
+}
+button {
+  /* Tamanho e tipografia */
+  min-width: 75px;
+  padding: 4px 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  color: #000000;
+
+  /* Bordas e forma */
+  border: 1px solid #3c7fb1;
+  border-radius: 3px;
+
+  /* Fundo com gradiente duplo característico do Windows 7 */
+  background: linear-gradient(
+    to bottom,
+    #f2f9fc 0%,
+    #e2f2fb 49%,
+    #bee6fd 50%,
+    #a7d9f5 100%
+  );
+
+  /* Brilho interno na borda */
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  outline: none;
+}
+
+/* Efeito ao passar o mouse */
+.btn-aero:hover {
+  border-color: #2c628b;
+  background: linear-gradient(
+    to bottom,
+    #eaf6fd 0%,
+    #d9f0fc 49%,
+    #bee6fd 50%,
+    #a7d9f5 100%
+  );
+  box-shadow:
+    inset 0 0 2px #ffffff,
+    0 0 3px rgba(60, 127, 177, 0.4);
+}
+
+/* Efeito ao clicar */
+.btn-aero:active {
+  border-color: #2c628b;
+  background: linear-gradient(
+    to bottom,
+    #e5f4fc 0%,
+    #c4e5f6 49%,
+    #98d1ef 50%,
+    #68b3db 100%
+  );
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+/* Na sua barra de título ou na div principal da janela */
+.window-header {
+  position: relative;
+  /* ...seus outros estilos (padding, gradiente, etc.) */
+}
+
+/* Container que agrupa os 3 botões */
+.aero-controls {
+  position: absolute;
+  top: 0;       /* Cola na borda superior */
+  right: 8px;   /* Pequena margem da borda direita */
+  display: flex;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  border-top: none; /* Remove a linha de cima */
+  border-radius: 0 0 5px 5px; /* Arredonda só embaixo */
+  overflow: hidden;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Botões Minimizar e Maximizar (mais estreitos) */
+.aero-btn {
+  width: 28px;
+  height: 19px;
+  padding: 0;
+  /* ...mantenha o gradiente de vidro */
+}
+
+/* Botão Fechar (mais largo) */
+.aero-btn.close {
+  width: 44px;
+}
+.botoes-entrada {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
 button:hover {
-  background: linear-gradient(to bottom, #eaf5ff, #bad8f2);
-  border-color: #5488b5;
+  background: linear-gradient(to bottom, #ffffff, #d8f1fa);
+  border-color: #65b4d1;
 }
 button:active {
-  background: linear-gradient(to bottom, #b9d8f2);
-  box-shadow: inset 1px 1px 3px rgb(0 0 0 / 0.2);
+  background: linear-gradient(to bottom, #cdeaf5, #eef8fc);
+  box-shadow: inset 1px 1px 3px rgb(0 0 0 / 0.15);
 }
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+#btn-conectar {
+  border: 1px solid #78ad5b;
+
+  background: linear-gradient(to bottom, #f7fff3, #d5edc9, #add998);
+
+  color: #315c27;
+}
 footer {
-  margin-top: 18px;
-  padding: 0 5px;
-  font-size: 11px;
-  color: #66839c;
+  background: linear-gradient(to bottom, #ddf2f8, #c2e5f0);
+  border-top: 1px solid #b1d5e2;
+  padding: 7px 12px;
+  font-size: 12px;
+  color: #58788a;
+}
+
+@media (max-width: 600px) {
+  .aplicacao {
+    padding: 8px;
+  }
+
+  .janela {
+    min-height: calc(100vh - 16px);
+  }
+
+  .conteudo-janela {
+    padding: 10px;
+  }
+
+  #form-entrada {
+    flex-wrap: wrap;
+  }
+
+  #form-entrada input {
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .compositor textarea {
+    min-height: 100px;
+  }
 }
