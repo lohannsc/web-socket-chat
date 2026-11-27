@@ -68,4 +68,4 @@ async def bate_papo(websocket: WebSocket, nome: str):
         pass
     finally:
         participante = sala.desconectar(websocket)
-        if participante: await sala.transmitir(criar_evento("Sistema", f"{participante} saiu da sala."))
+        if participante: await sala.transmitir(criar_evento("sistema", f"{participante} saiu da sala."))
