@@ -29,12 +29,12 @@ class SalaChat:
                 self.desconectar(cliente)
 
 
-def criar_evento(tipo: str, texto: str, nome: str = "Sistema") -> dic:
+def criar_evento(tipo: str, texto: str, nome: str = "Sistema") -> dict:
     return{
-     "tipo": tipo,
-    "nome": nome, 
-    "texto": texto,
-    "horario": datetime.now().strftime("%H:%M"),
+        "tipo": tipo,
+        "nome": nome, 
+        "texto": texto,
+        "horario": datetime.now().strftime("%H:%M"),
     }
 
 
@@ -48,20 +48,17 @@ def pagina_inicial():
 
 @app.websocket("/ws/{nome}")
 async def bate_papo(websocket: WebSocket, nome: str):
-    # TODO 4: validar o apelido, conectar, receber mensagens em loop,
-    # enviar a todos e tratar WebSocketDisconnect.
-    # Durante a preparacao da atividade, o servidor ainda nao oferece chat.
     nome = nome.strip()
     if len(nome) < 2 or len(nome) > 30:
         await websocket.close(code=1008)
         return
-    await sala.conectar(WebSocket, nome)
+    await sala.conectar(websocket, nome)
     await sala.transmitir(criar_evento("sistema", f"{nome} entrou na sala"))
 
     try:
         while True:
-            texto = (await websocket.receive_text()).strip #vai aguardar o texto
-            if not texto or texto(texto) > 300: #se o texto for vazio ou maior que 300caracteres
+            texto = (await websocket.receive_text()).strip() #vai aguardar o texto
+            if not texto or len(texto) > 300: #se o texto for vazio ou maior que 300caracteres
                 continue
             await sala.transmitir(criar_evento("mensagem", texto, nome))
     except WebSocketDisconnect:
