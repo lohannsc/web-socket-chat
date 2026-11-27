@@ -201,19 +201,45 @@ main {
   grid-area: avatar;
 }
 .icone-usuario {
+  --cor-status: #83bd68;
+
   width: 88px;
   height: 88px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: -2px;
+
   background: linear-gradient(135deg, #ffffff, #d5eaf2);
-  border: 3px solid #83bd68;
+
+  border: 3px solid var(--cor-status);
   border-radius: 13px;
+
   box-shadow:
     inset 0 0 0 2px #ffffff,
-    0 2px 5px rgba(91, 157, 65, 0.35);
+    0 2px 5px color-mix(in srgb, var(--cor-status) 45%, transparent);
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+/* Cores da moldura conforme o status */
+.icone-usuario[data-status="disponivel"] {
+  --cor-status: #83bd68;
+}
+
+.icone-usuario[data-status="ocupado"] {
+  --cor-status: #d9534f;
+}
+
+.icone-usuario[data-status="ausente"] {
+  --cor-status: #e5b84b;
+}
+
+.icone-usuario[data-status="desconectado"] {
+  --cor-status: #9aaab5;
 }
 .avatar-cabeca {
   width: 25px;
@@ -257,11 +283,34 @@ main {
   gap: 5px;
 }
 .status-indicador {
+  --cor-status: #65bd50;
+
   width: 9px;
   height: 9px;
+
+  flex-shrink: 0;
+
   border-radius: 50%;
-  background: #65bd50;
-  border: 1px solid #479a38;
+  background: var(--cor-status);
+  border: 1px solid color-mix(in srgb, var(--cor-status) 75%, #333333);
+
+  transition: background 0.2s;
+}
+
+.status-indicador[data-status="disponivel"] {
+  --cor-status: #65bd50;
+}
+
+.status-indicador[data-status="ocupado"] {
+  --cor-status: #d9534f;
+}
+
+.status-indicador[data-status="ausente"] {
+  --cor-status: #e5b84b;
+}
+
+.status-indicador[data-status="desconectado"] {
+  --cor-status: #9aaab5;
 }
 .status-usuario select {
   border: none;
@@ -348,10 +397,10 @@ input {
   color: #333333;
 }
 .barra-inferior {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 32px;
 }
 .barra-inferior {
   display: flex;
@@ -448,28 +497,26 @@ footer {
 }
 
 @media (max-width: 600px) {
+  .aplicacao {
+    padding: 8px;
+  }
 
-    .aplicacao {
-        padding: 8px;
-    }
+  .janela {
+    height: auto;
+    min-height: 0;
+  }
 
-    .janela {
-        height: auto;
-        min-height: 0;
-    }
+  .conteudo-janela {
+    padding: 10px;
+    min-height: 480px;
+  }
 
-    .conteudo-janela {
-        padding: 10px;
-        min-height: 480px;
-    }
+  #mensagens {
+    min-height: 0;
+  }
 
-    #mensagens {
-        min-height: 0;
-    }
-
-    .compositor textarea {
-        height: 100px;
-        min-height: 100px;
-    }
-
+  .compositor textarea {
+    height: 100px;
+    min-height: 100px;
+  }
 }
